@@ -4,34 +4,32 @@ import a from 'axios'
 import {Card,Button} from 'react-bootstrap'
 
 const Recipes = () => {
-  const [x, setx] = useState([])
+  const [data, setdata] = useState([])
 
 
   useEffect(() => {
     a.get('http://localhost:5000/recipes').then(res => {
       console.log(res.data)
+      setdata(res.data)
     }).catch(err => {
       console.log(err)
     })
   }, [])
 
-
-
   return (
-    <>
-     {x.map(z=>{
+    <div style={{display:'flex' , justifyContent:'space-around' , flexWrap:'wrap', padding:'3%' }} >
+     {data.map(z=>{
       
-      return(
+      return (
 
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem',  margin:'1%'}}>
       <Card.Img variant="top" src={z.image} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Title>{z.name}</Card.Title>
+       <div style={{display:'flex' , gap:'20px'}} >
+       <Button variant="primary">Add to cart</Button>
+       <Button variant="primary">Delt Recipe</Button>
+       </div>
       </Card.Body>
     </Card>
    
@@ -44,7 +42,7 @@ const Recipes = () => {
     })}
 
 
-    </>
+    </div>
   )
 }
 
