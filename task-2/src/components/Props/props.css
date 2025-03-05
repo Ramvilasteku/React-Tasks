@@ -1,0 +1,12 @@
+
+
+#card{
+    border: 1px solid;
+    width:300px;
+    height:480px;
+    padding:10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px gray;
+    text-align: center;
+    margin-bottom: 50px;
+}
